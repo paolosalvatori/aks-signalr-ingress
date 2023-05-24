@@ -1,4 +1,4 @@
-# SignalR chat exposed via NGINX Ingress Controller on AKS
+# SignalR + via NGINX Ingress Controller + AKS
 
 This sample shows how to expose a SignalR application running on AKS and exposed via NGINX ingress controller.
 
