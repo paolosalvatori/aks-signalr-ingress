@@ -1,10 +1,10 @@
-# Sample SignalR Chat for AKS exposed via NGINX Ingress Controller on AKS
+# SignalR chat exposed via NGINX Ingress Controller on AKS
 
 This sample shows how to expose a SignalR application running on AKS and exposed via NGINX ingress controller.
 
 ## Configuration
 
-- ASP.NET CORE /.0
+- ASP.NET CORE 7.0
 - SIGNALR 6.0.1
 - Razor Pages
 - Ubuntu WSL2 22.04.2
