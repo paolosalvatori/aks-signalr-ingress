@@ -12,8 +12,8 @@ This sample shows how to expose a SignalR application running on AKS and exposed
 
 ## Features
 
-- Serilog Logger for SignalR in Console of the POD
-- SignalR Chat for Debugging Purposes
+- Serilog Logger for SignalR in Console of the pod.
+- SignalR Chat for debugging purposes.
 - Webclient Index.cshtml & chat.js
   - Running Port 80
 - Signal ChatHub 
