@@ -71,7 +71,16 @@ public class Startup
             c.IncludeXmlComments(xmlPath);
         });
 
+        // Configure default origins
+        var origins = new string[3] { "https://localhost", "https://localhost:8080", "http://localhost:5000" };
 
+        // Read origins from CORS_ORIGINS environment variable
+        var corsOriginsEnvVar = Environment.GetEnvironmentVariable("CORS_ORIGINS");
+        if (!string.IsNullOrEmpty(corsOriginsEnvVar))
+        {
+            origins = corsOriginsEnvVar.Split(";");
+        }
+        
         services.AddCors(o =>
         {
             o.AddDefaultPolicy(b =>
@@ -79,7 +88,7 @@ public class Startup
                 b.AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
-                    .WithOrigins("https://localhost", "https://localhost:8080", "https://localhost:5000");
+                    .WithOrigins(origins);
             });
         });
     }

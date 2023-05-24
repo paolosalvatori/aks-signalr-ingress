@@ -18,8 +18,15 @@ spec:
     spec:
       containers:
         - name: signalrchat
-          image: pixiray.azurecr.io/signalrchat
+          image: mikiacr.azurecr.io/signalrchat:latest
           imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
           ports:
             - name: web
               containerPort: 8080

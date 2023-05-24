@@ -1,0 +1,30 @@
+﻿# For more information, see:
+# https://pumpingco.de/blog/using-signalr-in-kubernetes-behind-nginx-ingress/
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: signalrchat
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-nginx
+    cert-manager.io/acme-challenge-type: http01 
+    nginx.ingress.kubernetes.io/affinity: cookie
+    nginx.ingress.kubernetes.io/affinity-mode: persistent
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - signalr.babosbird.com
+    secretName: tls-secret
+  rules:
+  - host: signalr.babosbird.com
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: loadbalancer-signalrchat
+              port:
+                number: 80

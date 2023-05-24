@@ -1,0 +1,16 @@
+﻿kind: Service
+apiVersion: v1
+metadata:
+  name:  loadbalancer-signalrchat
+spec:
+  selector:
+    app:  signalrchat
+  sessionAffinity: ClientIP
+  type: LoadBalancer
+  ports:
+  - name:  web
+    port:  80
+    targetPort:  80
+  - name:  websocket
+    port:  5000
+    targetPort: 5000
